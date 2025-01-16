@@ -42,6 +42,8 @@ let sandClockList: SandClock[]
 
 ### 2.本地数据存储
 
+> 更新：如果不需要做后端，下面关于这个模块的描述就已经不适用了
+
 可以了解一下 `JSON.parse()` 函数，可以直接将 struct 类的实例转化成规范的 json 字符串
 
  本地的存储数据可能是这样的：
@@ -153,9 +155,7 @@ clock.clockState: number   // 查询沙漏状态
 
 # 项目管理
 
-我们是不是该开一个 github 或 gitlab ？
-
-以及上面的提到的**多线程**、**存储**最好写成独立的模块，只提供接口，而不是直接在 CatalogPage.ets 里直接写。
+上面的提到的**多线程**、**存储**最好写成独立的模块，只提供接口，而不是直接在 CatalogPage.ets 里直接写。
 
 模块放在 Module 文件夹下，存储文件放在 resource 文件夹下
 

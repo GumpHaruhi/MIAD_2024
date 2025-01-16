@@ -1,6 +1,7 @@
 import Account from '../object/Account';
 import SandClock from '../object/SandClock';
 import Constant from '../common/Constant';
+import MemoryModule from '../Module/MemoryModule';
 
 // TODO
 // 目录页面的布局与逻辑

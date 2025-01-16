@@ -4,6 +4,7 @@ import PreferenceModule from '../Module/PreferenceModule';
 import TextComponent from '../Module/TextComponent';
 import ButtonComponent from '../Module/ButtonComponent';
 import ButtonItem from '../Module/ButtonItem';
+import MemoryModule from '../Module/MemoryModule';
 import { display } from '@kit.ArkUI';
 import { promptAction } from '@kit.ArkUI';
 
@@ -58,14 +59,16 @@ struct LogPage {
           buttonItem: new ButtonItem(
             '登录',
             () => {
-              // TODO
               // 用户登录的逻辑
+              console.log("click log in");
               if(this.account.accountName === '' || this.account.accountPassword === ''){
                 this.showToastMessage('用户名或密码不能为空');
-                return;
+              } else if(!MemoryModule.checkAccount(this.account)){
+                this.showToastMessage('用户不存在！请先注册');
+              } else {
+                this.showToastMessage('登录成功');
+                PreferenceModule.writeData(this.account);
               }
-              this.showToastMessage('登录成功');
-              PreferenceModule.writeData(this.account);
             }
           )
         }).margin({ top: '20%' })
@@ -75,14 +78,17 @@ struct LogPage {
           buttonItem: new ButtonItem(
             '注册',
             () => {
-              // TODO
               // 用户注册逻辑
+              console.log("click sign in");
               if(this.account.accountName === '' || this.account.accountPassword === ''){
                 this.showToastMessage('用户名或密码不能为空');
-                return;
+              } else if(MemoryModule.checkAccount(this.account)){
+                this.showToastMessage('用户已存在');
+              } else {
+                MemoryModule.creatAccount(this.account);
+                this.showToastMessage('注册成功');
+                PreferenceModule.writeData(this.account);
               }
-              this.showToastMessage('注册成功');
-              console.log('click Sign button');
             }
           )
         })

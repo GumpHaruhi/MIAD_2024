@@ -4,6 +4,7 @@ import CatalogPage from './CatalogPage';
 import Account from '../object/Account';
 import Constant from '../common/Constant';
 import SandClock from '../object/SandClock';
+import MemoryModule from '../Module/MemoryModule';
 
 @Entry
 @Component

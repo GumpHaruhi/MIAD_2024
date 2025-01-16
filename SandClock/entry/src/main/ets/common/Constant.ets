@@ -16,8 +16,8 @@ class Constant {
   DEFAULT_CLOCK_STATE: number = 0;
 
   // 默认用户的信息
-  DEFAULT_ACCOUNT_NAME = 'LiHua';
-  DEFAULT_PASSWORD = '114514';
+  DEFAULT_ACCOUNT_NAME = '';
+  DEFAULT_PASSWORD = '';
 
   DEFAULT_WEB_URL: string = 'LocalWeb.html';
   HTTP_READ_TIMEOUT: number = 5000;
