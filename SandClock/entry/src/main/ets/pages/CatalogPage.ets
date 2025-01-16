@@ -11,6 +11,7 @@ import MemoryModule from '../Module/MemoryModule';
 struct CatalogPage {
   @Link user: Account;
   @Link currentClock: SandClock;
+  @Link logged: boolean;
 
   build(){
     Column(){

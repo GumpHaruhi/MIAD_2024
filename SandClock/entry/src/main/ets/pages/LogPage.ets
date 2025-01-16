@@ -8,12 +8,10 @@ import MemoryModule from '../Module/MemoryModule';
 import { display } from '@kit.ArkUI';
 import { promptAction } from '@kit.ArkUI';
 
-// TODO
-// 登录界面
-
 @Component
 struct LogPage {
   @Link account: Account;
+  @Link logged: boolean;
   @State isPortrait: boolean = true;
 
   aboutToAppear(): void {
@@ -67,6 +65,7 @@ struct LogPage {
                 this.showToastMessage('用户不存在！请先注册');
               } else {
                 this.showToastMessage('登录成功');
+                this.logged = true;
                 PreferenceModule.writeData(this.account);
               }
             }
@@ -87,11 +86,29 @@ struct LogPage {
               } else {
                 MemoryModule.creatAccount(this.account);
                 this.showToastMessage('注册成功');
+                this.logged = true;
                 PreferenceModule.writeData(this.account);
               }
             }
           )
         })
+
+      ButtonComponent({
+        account: $account,
+        buttonItem: new ButtonItem(
+          '注销',
+          () => {
+            // 注销用户
+            console.log("点击注销");
+            if(!this.logged){
+              return;
+            }
+            this.logged = false;
+            this.account.accountName = Constant.DEFAULT_ACCOUNT_NAME;
+            this.account.accountPassword = Constant.DEFAULT_PASSWORD;
+          }
+        )
+      })
     }
     .width('100%')
     .height('100%')

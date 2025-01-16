@@ -10,13 +10,20 @@ class MemoryModule {
     this.accountConfig = new Map<Account, Array<SandClock>>();
   }
 
+  private deepCopy<T>(obj: T): T {
+    return JSON.parse(JSON.stringify(obj));
+  }
+
   creatAccount(user: Account): boolean {
     // 注册新用户
     // 如果用户已存在或是空用户，则返回 false, 否则返回 true
-    if(this.accountConfig.has(user) || user.accountName === Constant.DEFAULT_ACCOUNT_NAME){
+    if(this.accountConfig.has(user)
+      || user.accountName === Constant.DEFAULT_ACCOUNT_NAME
+      || user.accountPassword == Constant.DEFAULT_PASSWORD){
       return false;
     }
-    this.accountConfig.set(user, []);
+    const new_user = this.deepCopy(user);
+    this.accountConfig.set(new_user, []);
     return true;
   }
 
@@ -33,7 +40,7 @@ class MemoryModule {
       return [];
     }
     // 返回此用户的沙漏列表
-    return this.accountConfig.get(user)!;
+    return this.deepCopy(this.accountConfig.get(user)!);
   }
 
   async write(user: Account, clock: SandClock){

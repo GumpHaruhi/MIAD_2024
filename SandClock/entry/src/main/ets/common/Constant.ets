@@ -11,9 +11,10 @@ class Constant {
 
   // 默认的沙漏信息
   DEFAULT_CLOCK_ID: number = -1;
-  DEFAULT_CLOCK_COMMIT = 'nothing';
-  DEFAULT_DURATION: number = 0;
-  DEFAULT_CLOCK_STATE: number = 0;
+  DEFAULT_CLOCK_COMMIT = '';
+  STATE_NOT_EXISTS: number = 0;
+  STATE_RUNNING: number = 1;
+  STATE_RUN_OVER: number = 2;
 
   // 默认用户的信息
   DEFAULT_ACCOUNT_NAME = '';
@@ -28,6 +29,15 @@ class Constant {
   PREFERENCE_KEY: string = 'account';
   TAG = '[PreferenceModel]';
   DURATION: number = 3000;
+
+  // 将字符串转成数字，仅正整数是合法的，非法返回-1
+  StringToInt(str: string): number {
+    const regx = /^[0-9]+$/;
+    if(str === '' || !regx.test(str)){
+      return -1;
+    }
+    return parseInt(str);
+  }
 }
 
 export default new Constant();

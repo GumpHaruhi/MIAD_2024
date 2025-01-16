@@ -8,6 +8,8 @@ import Constant from '../common/Constant';
 struct ShowPage {
   @Link clock: SandClock;
 
+
+
   build(){
 
   }

@@ -1,6 +1,7 @@
 import LogPage from './LogPage';
 import ShowPage from './ClockShowPage';
 import CatalogPage from './CatalogPage';
+import CreateClockPage from './CreateClockPage';
 import Account from '../object/Account';
 import Constant from '../common/Constant';
 import SandClock from '../object/SandClock';
@@ -12,6 +13,7 @@ struct Index {
   @State currentIndex: number = 0;
   @State account: Account = new Account();
   @State currentClock: SandClock = new SandClock();
+  @State logged: boolean = false;
   private tabsController: TabsController = new TabsController();
 
   @Builder
@@ -43,14 +45,19 @@ struct Index {
       .tabBar(this.tabBarBuilder('展示', 0))
 
       TabContent() {
-        CatalogPage({ user: $account, currentClock: $currentClock });
+        CatalogPage({ user: $account, currentClock: $currentClock, logged: $logged });
       }
       .tabBar(this.tabBarBuilder('目录', 1))
 
       TabContent() {
-        LogPage({ account: $account });
+        LogPage({ account: $account, logged: $logged });
       }
       .tabBar(this.tabBarBuilder('登录', 2))
+
+      TabContent() {
+        CreateClockPage({ user: $account, logged: $logged });
+      }
+      .tabBar(this.tabBarBuilder('添加', 3))
     }
     .vertical(false)
     .divider({
