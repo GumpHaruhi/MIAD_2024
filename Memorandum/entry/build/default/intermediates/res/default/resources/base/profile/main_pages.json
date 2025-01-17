@@ -1,0 +1,9 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/AddMemorandumPage",
+    "pages/MemorandumDetDetailsPage",
+    "pages/LoginPage",
+    "pages/RegisterPage"
+  ]
+}

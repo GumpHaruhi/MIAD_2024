@@ -1,0 +1,36 @@
+{
+  "entry\\src\\main\\ets\\entryability\\EntryAbility.ets": [
+    "ohos.app.ability.ConfigurationConstant",
+    "ohos.app.ability.UIAbility",
+    "ohos.app.ability.AbilityConstant",
+    "ohos.app.ability.Want",
+    "ohos.hilog"
+  ],
+  "entry\\src\\main\\ets\\pages\\AddMemorandumPage.ets": [
+    "ohos.promptAction",
+    "ohos.router"
+  ],
+  "entry\\src\\main\\ets\\pages\\Index.ets": [
+    "ohos.router",
+    "ohos.events.emitter"
+  ],
+  "entry\\src\\main\\ets\\entrybackupability\\EntryBackupAbility.ets": [
+    "ohos.hilog",
+    "ohos.application.BackupExtensionAbility"
+  ],
+  "entry\\src\\main\\ets\\pages\\MemorandumDetDetailsPage.ets": [
+    "ohos.router",
+    "ohos.events.emitter"
+  ],
+  "entry\\src\\main\\ets\\pages\\LoginPage.ets": [
+    "ohos.router",
+    "ohos.promptAction"
+  ],
+  "entry\\src\\main\\ets\\pages\\RegisterPage.ets": [
+    "ohos.router",
+    "ohos.promptAction"
+  ],
+  "entry\\src\\main\\ets\\model\\PreferenceUtil.ets": [
+    "ohos.data.preferences"
+  ]
+}
